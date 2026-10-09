@@ -1,0 +1,54 @@
+{
+  "slug": "shadhi-catering-and-event-management-vadakara",
+  "name": "Shadhi Catering and Event Management Vadakara",
+  "shortName": "Shadhi Catering and Event Management Vadakara",
+  "descriptor": "Catering & Events",
+  "address": "Shadhi Event, Customs Rd, Peringadi Vayalil, Vatakara, Keralam 673103",
+  "area": "Peringadi Vayalil",
+  "city": "Vatakara",
+  "district": "Kozhikode",
+  "region": "Kerala",
+  "postalCode": "673103",
+  "geo": {
+    "lat": 11.6008344,
+    "lng": 75.58111509999999
+  },
+  "mapsLink": "https://maps.google.com/?cid=17056010384346322199",
+  "phone": "+91 81370 73555",
+  "whatsapp": "918137073555",
+  "hours": "Open 9 am – 7 pm · closed Sun",
+  "opens": "09:00",
+  "closes": "19:00",
+  "rating": 4.8,
+  "reviewCount": 20,
+  "reviews": [
+    {
+      "name": "Dasthakeer mp",
+      "rating": 5,
+      "quote": "Best Wedding Event Team in Vadakara Shadhi Catering & Event made our wedding day perfect! They were professional, organized, and really listened to what we wanted. Every detail, from the décor to the event schedule, was handled flawlessly. The team took care of everything, so we could enjoy our day without any worries."
+    },
+    {
+      "name": "Asnad.",
+      "rating": 4,
+      "quote": "last month we hired shadi catering for my friend's engagement function, and they made our special day favorable, the food was delicious and tasty they catered to our special menu needs without any issues, and the entire process was smooth from start to finish."
+    },
+    {
+      "name": "firoz kmp",
+      "rating": 5,
+      "quote": "Professional,experienced,customer focused staffs and management."
+    },
+    {
+      "name": "Sunitha Vk",
+      "rating": 5,
+      "quote": "Good event management and catering👍"
+    }
+  ],
+  "gallery": [
+    "gallery/01.webp",
+    "gallery/02.webp",
+    "gallery/03.webp",
+    "gallery/04.webp",
+    "gallery/05.webp"
+  ],
+  "url": "https://shadhi-catering-and-event-managemen.vercel.app"
+}
