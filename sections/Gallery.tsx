@@ -59,7 +59,8 @@ export default function Gallery() {
                   />
                   <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/0 to-ink/0 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
                   {item.caption && (
-                    <span className="pointer-events-none absolute inset-x-0 bottom-0 p-3 text-left font-sans text-[0.72rem] font-medium text-ivory md:p-4 md:text-sm">
+                    // Phones: tiles are too small for a caption over the photo; it shows in the lightbox instead.
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 hidden p-4 text-left font-sans text-sm font-medium text-ivory md:block">
                       {item.caption}
                     </span>
                   )}

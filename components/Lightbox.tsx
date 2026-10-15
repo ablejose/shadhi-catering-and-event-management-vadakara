@@ -84,7 +84,7 @@ export default function Lightbox({
             }}
           >
             <Img src={item.src} alt={item.alt} fallbackSeed={item.src} className="max-h-[80vh] w-auto object-contain" />
-            <figcaption className="bg-ink px-4 py-3 font-sans text-sm text-ivory/80">{item.alt}</figcaption>
+            <figcaption className="bg-ink px-4 py-3 font-sans text-sm text-ivory/80">{item.caption ?? item.alt}</figcaption>
           </motion.figure>
           <button
             aria-label="Next image"
