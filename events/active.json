@@ -45,11 +45,78 @@
     }
   ],
   "gallery": [
-    "gallery/01.webp",
-    "gallery/02.webp",
-    "gallery/03.webp",
-    "gallery/04.webp",
-    "gallery/05.webp"
+    {
+      "src": "gallery/01.webp",
+      "alt": "Red rose stage with gold arches and crystal chandeliers — Shadhi Catering and Event Management",
+      "caption": "Red rose stage with gold arches and crystal chandeliers"
+    },
+    {
+      "src": "gallery/02.webp",
+      "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
+      "caption": "Live buffet served from copper pots"
+    },
+    {
+      "src": "gallery/03.webp",
+      "alt": "White and gold stage with candle stands — Shadhi Catering and Event Management",
+      "caption": "White and gold stage with candle stands"
+    },
+    {
+      "src": "gallery/04.webp",
+      "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
+      "caption": "Night buffet with lit lattice counters"
+    },
+    {
+      "src": "gallery/05.webp",
+      "alt": "Bride and groom under a shower of confetti — Shadhi Catering and Event Management",
+      "caption": "Bride and groom under a shower of confetti"
+    },
+    {
+      "src": "gallery/06.webp",
+      "alt": "Sangeet night stage with glowing gold arches — Shadhi Catering and Event Management",
+      "caption": "Sangeet night stage with glowing gold arches"
+    },
+    {
+      "src": "gallery/07.webp",
+      "alt": "Gold arches dressed in pink and white roses — Shadhi Catering and Event Management",
+      "caption": "Gold arches dressed in pink and white roses"
+    },
+    {
+      "src": "gallery/08.webp",
+      "alt": "Red floral stage set for the guests — Shadhi Catering and Event Management",
+      "caption": "Red floral stage set for the guests"
+    }
   ],
+  "media": {
+    "heroSlides": [
+      {
+        "src": "hero/01.webp",
+        "alt": "White and gold wedding stage with candle stands, by Shadhi"
+      },
+      {
+        "src": "hero/02.webp",
+        "alt": "Red rose wedding stage with gold arches, by Shadhi"
+      },
+      {
+        "src": "hero/03.webp",
+        "alt": "Gold arches with pink and white roses, by Shadhi"
+      }
+    ],
+    "about": [
+      {
+        "src": "about/01.webp",
+        "alt": "Bride and groom celebrating with family as confetti falls"
+      },
+      {
+        "src": "about/02.webp",
+        "alt": "Sangeet night stage with gold arches and fairy lights"
+      }
+    ],
+    "services": [
+      "services/01.webp",
+      "services/02.webp",
+      "services/03.webp"
+    ],
+    "ogImage": "og-image.jpg"
+  },
   "url": "https://shadhi-catering-and-event-managemen.vercel.app"
 }
