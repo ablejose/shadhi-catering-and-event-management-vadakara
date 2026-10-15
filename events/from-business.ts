@@ -1,5 +1,5 @@
-import type { EventConfig, EventVariant, MenuPreset } from "@/config/event-schema";
-import { templateMenu, templateMenuPresets } from "@/config/template";
+import type { EventConfig, EventVariant, GalleryEntry, MenuPreset } from "@/config/event-schema";
+import { templateMenu, templateMenuPresets, templateServices } from "@/config/template";
 
 /**
  * ONE BUSINESS, AS THE SITE GENERATOR WRITES IT.
@@ -50,8 +50,16 @@ export interface BusinessInput {
   /** Real Google reviews only. */
   reviews?: { name: string; rating: number; quote: string }[];
 
-  /** Their own photos, relative to /events/<slug>/ — e.g. "gallery/01.jpg". */
-  gallery: string[];
+  /** Their own photos, relative to /events/<slug>/ — e.g. "gallery/01.jpg", or { src, alt, caption }. */
+  gallery: GalleryEntry[];
+  /** Their own hero / about / service-card / share photos. Anything left out stays template stock. */
+  media?: {
+    heroSlides?: GalleryEntry[];
+    about?: GalleryEntry[];
+    /** One image per shared service card, in order. */
+    services?: string[];
+    ogImage?: string;
+  };
 
   /** Live site origin, no trailing slash. */
   url: string;
@@ -83,12 +91,15 @@ const neutralPresets: MenuPreset[] = templateMenuPresets.map((p) => ({
   items: p.items.filter((id) => !NEUTRAL_DROP.has(id)),
 }));
 
+const srcOf = (e: GalleryEntry) => (typeof e === "string" ? e : e.src);
+
 const uniq = (xs: (string | undefined)[]) => Array.from(new Set(xs.filter((x): x is string => !!x && !!x.trim())));
 
 export function fromBusiness(b: BusinessInput): EventConfig {
   // Unknown district, or district == town (e.g. Kottayam): show the state instead of repeating the town.
   const district = b.district && b.district.toLowerCase() !== b.city.toLowerCase() ? b.district : b.region || "Kerala";
   const descriptor = b.descriptor || "Catering & Events";
+  const heroSlides = b.media?.heroSlides?.length ? b.media.heroSlides : STOCK.heroSlides;
   const mapEmbed = b.geo
     ? `https://www.google.com/maps?q=${b.geo.lat},${b.geo.lng}&z=15&output=embed`
     : `https://www.google.com/maps?q=${encodeURIComponent(`${b.name}, ${b.address}`)}&output=embed`;
@@ -127,15 +138,23 @@ export function fromBusiness(b: BusinessInput): EventConfig {
     reputation: { rating: b.rating ?? 0, reviews: b.reviewCount ?? 0 },
     media: {
       base: `/events/${b.slug}`,
-      heroPoster: STOCK.heroSlides[0].src,
-      heroSlides: STOCK.heroSlides,
-      ogImage: STOCK.ogImage,
+      heroPoster: srcOf(heroSlides[0]),
+      heroSlides,
+      ogImage: b.media?.ogImage || STOCK.ogImage,
       brandDir: STOCK.brandDir,
-      about: STOCK.about,
-      gallery: b.gallery.map((src, i) => ({ src, alt: `${b.name} — event photo ${i + 1}` })),
+      about: b.media?.about?.length ? b.media.about : STOCK.about,
+      gallery: b.gallery.map((g, i) =>
+        typeof g === "string" ? { src: g, alt: `${b.name} — event photo ${i + 1}` } : { alt: `${b.name} — event photo ${i + 1}`, ...g }
+      ),
     },
     reviews: (b.reviews ?? []).map((r) => ({ ...r, source: "Google review" })),
     seo: { keywords: uniq([b.name, b.shortName, `${b.shortName || b.name} ${b.city}`]) },
-    overrides: { menu: neutralMenu, menuPresets: neutralPresets },
+    overrides: {
+      menu: neutralMenu,
+      menuPresets: neutralPresets,
+      ...(b.media?.services?.length && {
+        services: templateServices.map((s, i) => ({ ...s, image: b.media?.services?.[i] || s.image })),
+      }),
+    },
   };
 }
