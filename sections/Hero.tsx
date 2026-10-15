@@ -110,6 +110,8 @@ export default function Hero() {
               aria-hidden={i !== current}
               loading="eager"
               decoding="async"
+              // First slide is the page's largest paint: fetch it ahead of the slides behind it.
+              {...{ fetchpriority: i === 0 ? "high" : "low" }}
               className="h-full w-full object-cover"
               style={{ transformOrigin: "50% 60%" }}
             />
