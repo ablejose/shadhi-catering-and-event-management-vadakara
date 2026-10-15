@@ -46,6 +46,16 @@
   ],
   "gallery": [
     {
+      "src": "gallery/05.webp",
+      "alt": "Bride and groom under a shower of confetti — Shadhi Catering and Event Management",
+      "caption": "Bride and groom under a shower of confetti"
+    },
+    {
+      "src": "gallery/04.webp",
+      "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
+      "caption": "Night buffet with lit lattice counters"
+    },
+    {
       "src": "gallery/01.webp",
       "alt": "Red rose stage with gold arches and crystal chandeliers — Shadhi Catering and Event Management",
       "caption": "Red rose stage with gold arches and crystal chandeliers"
@@ -59,16 +69,6 @@
       "src": "gallery/03.webp",
       "alt": "White and gold stage with candle stands — Shadhi Catering and Event Management",
       "caption": "White and gold stage with candle stands"
-    },
-    {
-      "src": "gallery/04.webp",
-      "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
-      "caption": "Night buffet with lit lattice counters"
-    },
-    {
-      "src": "gallery/05.webp",
-      "alt": "Bride and groom under a shower of confetti — Shadhi Catering and Event Management",
-      "caption": "Bride and groom under a shower of confetti"
     },
     {
       "src": "gallery/06.webp",
@@ -110,11 +110,6 @@
         "src": "about/02.webp",
         "alt": "Sangeet night stage with gold arches and fairy lights"
       }
-    ],
-    "services": [
-      "services/01.webp",
-      "services/02.webp",
-      "services/03.webp"
     ],
     "ogImage": "og-image.jpg"
   },
