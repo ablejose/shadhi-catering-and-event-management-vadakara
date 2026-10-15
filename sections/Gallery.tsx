@@ -9,12 +9,13 @@ import { galleryImages } from "@/config/gallery";
 import { copy } from "@/config/site";
 import { t } from "@/lib/copy";
 
-/** Photos shown before "Show all" — enough to fill three masonry columns. */
-const INITIAL = 9;
+/** Photos shown before "Show all" — two full rows of four (four rows of two on phones). */
+const INITIAL = 8;
 
 /**
- * OUR WORK — the client's own photos as a masonry wall. Tap any photo for the
- * full-size lightbox. Photos only (no video), straight from the event config.
+ * OUR WORK — the client's own photos as an even grid of same-shape tiles, so rows
+ * line up whatever the photos' own shapes. Tap any photo for the full-size
+ * lightbox (uncropped). Photos only (no video), straight from the event config.
  */
 export default function Gallery() {
   const [active, setActive] = useState<number | null>(null);
@@ -42,20 +43,20 @@ export default function Gallery() {
         </div>
 
         <div className="relative mt-12">
-          <div className="columns-2 gap-3 md:columns-3 md:gap-5 [&>*]:mb-3 md:[&>*]:mb-5">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
             {shown.map((item, i) => (
-              <Reveal key={item.src} delay={(i % 3) * 0.06} className="break-inside-avoid">
+              <Reveal key={item.src} delay={(i % 4) * 0.06}>
                 <button
                   type="button"
                   onClick={() => setActive(i)}
                   aria-label={`Open photo: ${item.alt}`}
-                  className="group relative block w-full overflow-hidden rounded-brand bg-sand"
+                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-brand bg-sand"
                 >
                   <Img
                     src={item.src}
                     alt={item.alt}
                     fallbackSeed={item.src}
-                    className="h-auto w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                    className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
                   />
                   <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/0 to-ink/0 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
                   {item.caption && (
