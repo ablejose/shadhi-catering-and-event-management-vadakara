@@ -9,13 +9,29 @@ import { galleryImages } from "@/config/gallery";
 import { copy } from "@/config/site";
 import { t } from "@/lib/copy";
 
-/** Photos shown before "Show all" — two full rows of four (four rows of two on phones). */
+/** Photos shown before "Show all" — one full collage block. */
 const INITIAL = 8;
 
 /**
- * OUR WORK — the client's own photos as an even grid of same-shape tiles, so rows
- * line up whatever the photos' own shapes. Tap any photo for the full-size
- * lightbox (uncropped). Photos only (no video), straight from the event config.
+ * Collage tile shapes, repeating every 8 photos. On 4 columns this fills a clean
+ * 4x4 block (tall, tall, big | wide, tall, tall, small, small); on 2 columns it
+ * stacks as two talls, one big, one wide, two talls, two smalls — edges always flush.
+ */
+const TILE = [
+  "row-span-2",
+  "row-span-2",
+  "col-span-2 row-span-2",
+  "col-span-2",
+  "row-span-2",
+  "row-span-2",
+  "",
+  "",
+];
+
+/**
+ * OUR WORK — the client's own photos as a collage of tall, big and wide tiles.
+ * Tap any photo for the full-size lightbox (uncropped). Photos only (no video),
+ * straight from the event config.
  */
 export default function Gallery() {
   const [active, setActive] = useState<number | null>(null);
@@ -43,14 +59,14 @@ export default function Gallery() {
         </div>
 
         <div className="relative mt-12">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+          <div className="grid auto-rows-[150px] grid-cols-2 gap-3 sm:auto-rows-[210px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]">
             {shown.map((item, i) => (
-              <Reveal key={item.src} delay={(i % 4) * 0.06}>
+              <Reveal key={item.src} delay={(i % 4) * 0.06} className={TILE[i % TILE.length]}>
                 <button
                   type="button"
                   onClick={() => setActive(i)}
                   aria-label={`Open photo: ${item.alt}`}
-                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-brand bg-sand"
+                  className="group relative block h-full w-full overflow-hidden rounded-brand bg-sand"
                 >
                   <Img
                     src={item.src}
