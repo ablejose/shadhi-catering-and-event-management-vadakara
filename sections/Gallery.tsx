@@ -13,17 +13,19 @@ import { t } from "@/lib/copy";
 const INITIAL = 8;
 
 /**
- * Collage tile shapes, repeating every 8 photos. On 4 columns this fills a clean
- * 4x4 block (tall, tall, big | wide, tall, tall, small, small); on 2 columns it
- * stacks as two talls, one big, one wide, two talls, two smalls — edges always flush.
+ * Collage tile shapes, repeating every 8 photos (the grid packs densely, so small
+ * tiles drop into gaps). On 4 columns: a clean 4x4 block — tall, tall, big | wide,
+ * tall, tall, small, small. On 2 columns the heights stagger like a pinned collage:
+ * a 3-row tall beside a 2-row tall + small, a full-width big and wide, then a
+ * 2-row tall + small beside a 3-row tall. Edges stay flush either way.
  */
 const TILE = [
-  "row-span-2",
+  "row-span-3 md:row-span-2",
   "row-span-2",
   "col-span-2 row-span-2",
   "col-span-2",
   "row-span-2",
-  "row-span-2",
+  "row-span-3 md:row-span-2",
   "",
   "",
 ];
@@ -59,7 +61,7 @@ export default function Gallery() {
         </div>
 
         <div className="relative mt-12">
-          <div className="grid auto-rows-[150px] grid-cols-2 gap-3 sm:auto-rows-[210px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]">
+          <div className="grid grid-flow-row-dense auto-rows-[118px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]">
             {shown.map((item, i) => (
               <Reveal key={item.src} delay={(i % 4) * 0.06} className={TILE[i % TILE.length]}>
                 <button
