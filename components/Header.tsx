@@ -71,17 +71,18 @@ export default function Header() {
           : "border-b border-espresso/30 bg-[rgba(36,28,21,0.92)] backdrop-blur-[10px]"
       )}
     >
-      <div className="mx-auto flex max-w-shell items-center justify-between px-5 py-4 md:px-8">
+      {/* Phones: a slim bar — name only, no descriptor line. Desktop keeps the full lockup. */}
+      <div className="mx-auto flex max-w-shell items-center justify-between px-5 py-2 md:px-8 lg:py-4">
         <Link href="/" className="flex items-center gap-3 leading-none" aria-label={`${site.fullName} home`}>
           {logoMark && (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={logoMark} alt="" aria-hidden className="h-9 w-9 object-contain" />
           )}
           <span className="flex flex-col">
-          <span className={cn("font-display text-2xl tracking-wide transition-colors", solid ? "text-espresso" : "text-ivory")}>
+          <span className={cn("font-display text-[1.35rem] tracking-wide transition-colors lg:text-2xl", solid ? "text-espresso" : "text-ivory")}>
             {site.name}
           </span>
-          <span className={cn("mt-0.5 font-sans text-[0.6rem] uppercase tracking-[0.24em] transition-colors", solid ? "text-saffron-2" : "text-ivory/70")}>
+          <span className={cn("mt-0.5 hidden font-sans text-[0.6rem] uppercase lg:block tracking-[0.24em] transition-colors", solid ? "text-saffron-2" : "text-ivory/70")}>
             {site.kicker}
           </span>
           </span>
