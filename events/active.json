@@ -193,7 +193,12 @@
         "alt": "Sangeet night stage with gold arches and fairy lights"
       }
     ],
-    "ogImage": "og-image.jpg"
+    "ogImage": "og-image.jpg",
+    "aboutVideo": {
+      "src": "about/popper.mp4",
+      "poster": "about/popper-poster.webp",
+      "alt": "Bride and groom on stage as the party poppers go off — Shadhi Catering and Event Management"
+    }
   },
   "url": "https://shadhi-catering-and-event-managemen.vercel.app",
   "instagram": "https://www.instagram.com/shadhieventvtk/"
