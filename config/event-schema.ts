@@ -205,6 +205,11 @@ export interface EventConfig {
     brandDir?: MediaPath;
     /** Crossfading pair (or more) in the About section. */
     about: GalleryEntry[];
+    /**
+     * Optional short muted loop (4:5 works best) shown in the About section in
+     * place of the crossfade. Loads only when scrolled near; the poster shows first.
+     */
+    aboutVideo?: { src: MediaPath; poster?: MediaPath; alt?: string };
     /** "Our work" photos — their real events only. */
     gallery: GalleryEntry[];
   };

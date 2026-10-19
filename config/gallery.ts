@@ -42,4 +42,10 @@ export const aboutImages: GalleryItem[] = event.media.about.map((a, i) =>
   normalize(a, `${event.brand.name} — photo ${i + 1}`)
 );
 
+/** Optional About-section video loop (replaces the crossfade when set). */
+const av = event.media.aboutVideo;
+export const aboutVideo = av
+  ? { src: asset(av.src), poster: av.poster ? asset(av.poster) : undefined, alt: av.alt ?? `${event.brand.name} — celebration` }
+  : undefined;
+
 export const gallerySettings = templateCopy.gallerySettings;

@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Star, Clock, Truck, MapPin } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { Img } from "@/components/ui/Img";
 import { copy, event, site, withoutDelivery } from "@/config/site";
-import { aboutImages, gallerySettings } from "@/config/gallery";
+import { aboutImages, aboutVideo, gallerySettings } from "@/config/gallery";
 import { t, tAll } from "@/lib/copy";
 
 const POINT_ICONS = [Clock, Truck, MapPin];
@@ -19,7 +19,7 @@ export default function About() {
 
   const [idx, setIdx] = useState(0);
   useEffect(() => {
-    if (aboutImages.length < 2) return;
+    if (aboutVideo || aboutImages.length < 2) return;
     const ms = gallerySettings.aboutIntervalMs;
     const timer = setInterval(() => setIdx((i) => (i + 1) % aboutImages.length), ms);
     return () => clearInterval(timer);
@@ -65,8 +65,11 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <figure className="relative overflow-hidden rounded-brand" style={{ aspectRatio: "4 / 5" }}>
-            {aboutImages.map((im, i) => (
+          <figure className="relative overflow-hidden rounded-brand bg-sand" style={{ aspectRatio: "4 / 5" }}>
+            {aboutVideo ? (
+              <AboutVideo src={aboutVideo.src} poster={aboutVideo.poster} label={aboutVideo.alt} />
+            ) : (
+              aboutImages.map((im, i) => (
               <Img
                 key={im.src}
                 src={im.src}
@@ -75,10 +78,53 @@ export default function About() {
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{ opacity: i === idx ? 1 : 0, transition: "opacity 0.8s ease-in-out" }}
               />
-            ))}
+              ))
+            )}
           </figure>
         </Reveal>
       </div>
     </section>
+  );
+}
+
+/**
+ * Muted looping clip. Nothing downloads until it's near the screen (poster shows
+ * first); it pauses when scrolled away, and stays on the poster for reduced motion.
+ */
+function AboutVideo({ src, poster, label }: { src: string; poster?: string; label: string }) {
+  const ref = useRef<HTMLVideoElement | null>(null);
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setLoad(true);
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={load ? src : undefined}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      autoPlay
+      preload="none"
+      aria-label={label}
+      className="absolute inset-0 h-full w-full object-cover"
+    />
   );
 }

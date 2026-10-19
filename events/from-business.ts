@@ -58,6 +58,8 @@ export interface BusinessInput {
   media?: {
     heroSlides?: GalleryEntry[];
     about?: GalleryEntry[];
+    /** Short muted loop for the About section, in place of the about photos. */
+    aboutVideo?: { src: string; poster?: string; alt?: string };
     /** One image per shared service card, in order. */
     services?: string[];
     ogImage?: string;
@@ -145,6 +147,7 @@ export function fromBusiness(b: BusinessInput): EventConfig {
       ogImage: b.media?.ogImage || STOCK.ogImage,
       brandDir: STOCK.brandDir,
       about: b.media?.about?.length ? b.media.about : STOCK.about,
+      aboutVideo: b.media?.aboutVideo,
       gallery: b.gallery.map((g, i) =>
         typeof g === "string" ? { src: g, alt: `${b.name} — event photo ${i + 1}` } : { alt: `${b.name} — event photo ${i + 1}`, ...g }
       ),
