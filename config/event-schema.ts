@@ -36,7 +36,15 @@ export interface EventImage {
 export type GalleryTile = "big" | "tall" | "wide" | "small";
 export type GalleryEntry =
   | MediaPath
-  | { src: MediaPath; alt?: string; caption?: string; group?: string; tile?: GalleryTile };
+  | {
+      src: MediaPath;
+      alt?: string;
+      caption?: string;
+      group?: string;
+      tile?: GalleryTile;
+      /** CSS object-position for the collage crop, e.g. "50% 30%" to keep the top in frame. */
+      focus?: string;
+    };
 
 /** One dish on the quote-builder menu. */
 export interface MenuItem {

@@ -13,6 +13,8 @@ export interface GalleryItem {
   group?: string;
   /** Collage shape chosen in the event config; otherwise the group's pattern decides. */
   tile?: GalleryTile;
+  /** object-position for the collage crop; centre when unset. */
+  focus?: string;
   wide?: boolean;
 }
 
@@ -26,6 +28,7 @@ const normalize = (entry: GalleryEntry, fallbackAlt: string): GalleryItem => {
     caption: entry.caption,
     group: entry.group,
     tile: entry.tile,
+    focus: entry.focus,
   };
 };
 

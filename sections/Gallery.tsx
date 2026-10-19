@@ -65,6 +65,7 @@ function Collage({ items, offset, onOpen }: { items: GalleryItem[]; offset: numb
               alt={item.alt}
               fallbackSeed={item.src}
               className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+              style={item.focus ? { objectPosition: item.focus } : undefined}
             />
             <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/0 to-ink/0 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
             {item.caption && (
