@@ -83,52 +83,88 @@
       "group": "Décor & stages"
     },
     {
-      "src": "gallery/10.webp",
-      "alt": "Rustic food counter under hanging lights — Shadhi Catering and Event Management",
-      "caption": "Rustic food counter under hanging lights",
-      "group": "Our food & staff"
-    },
-    {
-      "src": "gallery/04.webp",
-      "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
-      "caption": "Night buffet with lit lattice counters",
-      "group": "Our food & staff"
-    },
-    {
       "src": "gallery/09.webp",
       "alt": "Kerala sadya on banana leaf — Shadhi Catering and Event Management",
       "caption": "Kerala sadya on banana leaf",
-      "group": "Our food & staff"
-    },
-    {
-      "src": "gallery/02.webp",
-      "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
-      "caption": "Live buffet served from copper pots",
-      "group": "Our food & staff"
+      "group": "Our food & staff",
+      "tile": "big"
     },
     {
       "src": "gallery/11.webp",
       "alt": "Malabar chicken biryani — Shadhi Catering and Event Management",
       "caption": "Malabar chicken biryani",
-      "group": "Our food & staff"
+      "group": "Our food & staff",
+      "tile": "tall"
     },
     {
-      "src": "gallery/13.webp",
-      "alt": "Our service team at the buffet — Shadhi Catering and Event Management",
-      "caption": "Our service team at the buffet",
-      "group": "Our food & staff"
+      "src": "gallery/15.webp",
+      "alt": "Appam with vegetable stew — Shadhi Catering and Event Management",
+      "caption": "Appam with vegetable stew",
+      "group": "Our food & staff",
+      "tile": "small"
+    },
+    {
+      "src": "gallery/16.webp",
+      "alt": "Mutton curry with potatoes — Shadhi Catering and Event Management",
+      "caption": "Mutton curry with potatoes",
+      "group": "Our food & staff",
+      "tile": "small"
+    },
+    {
+      "src": "gallery/17.webp",
+      "alt": "Rice and curries, served family-style — Shadhi Catering and Event Management",
+      "caption": "Rice and curries, served family-style",
+      "group": "Our food & staff",
+      "tile": "wide"
     },
     {
       "src": "gallery/12.webp",
       "alt": "Kerala meal with fried fish — Shadhi Catering and Event Management",
       "caption": "Kerala meal with fried fish",
-      "group": "Our food & staff"
+      "group": "Our food & staff",
+      "tile": "wide"
+    },
+    {
+      "src": "gallery/10.webp",
+      "alt": "Rustic food counter under hanging lights — Shadhi Catering and Event Management",
+      "caption": "Rustic food counter under hanging lights",
+      "group": "Our food & staff",
+      "tile": "tall"
+    },
+    {
+      "src": "gallery/04.webp",
+      "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
+      "caption": "Night buffet with lit lattice counters",
+      "group": "Our food & staff",
+      "tile": "tall"
+    },
+    {
+      "src": "gallery/02.webp",
+      "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
+      "caption": "Live buffet served from copper pots",
+      "group": "Our food & staff",
+      "tile": "big"
     },
     {
       "src": "gallery/14.webp",
       "alt": "Our hospitality team, ready for guests — Shadhi Catering and Event Management",
       "caption": "Our hospitality team, ready for guests",
-      "group": "Our food & staff"
+      "group": "Our food & staff",
+      "tile": "big"
+    },
+    {
+      "src": "gallery/13.webp",
+      "alt": "Our service team at the buffet — Shadhi Catering and Event Management",
+      "caption": "Our service team at the buffet",
+      "group": "Our food & staff",
+      "tile": "tall"
+    },
+    {
+      "src": "gallery/18.webp",
+      "alt": "Event security on duty — Shadhi Catering and Event Management",
+      "caption": "Event security on duty",
+      "group": "Our food & staff",
+      "tile": "tall"
     }
   ],
   "media": {
