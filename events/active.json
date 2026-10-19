@@ -125,11 +125,12 @@
       "tile": "small"
     },
     {
-      "src": "gallery/22.webp",
-      "alt": "Chocolate ice cream — Shadhi Catering and Event Management",
-      "caption": "Chocolate ice cream",
+      "src": "gallery/23.webp",
+      "alt": "Ice cream sundae with a wafer — Shadhi Catering and Event Management",
+      "caption": "Ice cream sundae with a wafer",
       "group": "Our food & staff",
-      "tile": "small"
+      "tile": "small",
+      "focus": "50% 0%"
     },
     {
       "src": "gallery/10.webp",

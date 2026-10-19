@@ -13,4 +13,4 @@ Shadhi's own photos when available.
 | `gallery/19.webp` | [Cooked food in stainless steel bowl](https://unsplash.com/photos/cooked-food-in-stainless-steel-bowl-7-TOCB28rms) (beef roast) | Daily Slowdown |
 | `gallery/20.webp` | [Chicken curry in a white bowl with sauce](https://unsplash.com/photos/chicken-curry-in-a-white-bowl-with-sauce-VtNLbOAeO68) | Kalindu Waranga |
 | `gallery/21.webp` | [Brown and green food on gray tray](https://unsplash.com/photos/brown-and-green-food-on-gray-tray-hEMOwugpjJk) (spicy chicken fry) | Dr Muhammad Amer |
-| `gallery/22.webp` | [Chocolate ice cream scoops in a red bowl with spoon](https://unsplash.com/photos/chocolate-ice-cream-scoops-in-a-red-bowl-with-spoon-rExhxArsoVk) | David Trinks |
+| `gallery/23.webp` | [Ice cream with chocolate and chocolate ice cream on clear glass](https://unsplash.com/photos/ice-cream-with-chocolate-and-chocolate-ice-cream-on-clear-glass-g65SMAYRZJQ) (cropped 4:3) | Sebastian Coman Photography |
