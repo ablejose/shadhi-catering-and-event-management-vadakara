@@ -1,25 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ChevronDown, Maximize2 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { Img } from "@/components/ui/Img";
 import Lightbox from "@/components/Lightbox";
-import { galleryImages } from "@/config/gallery";
+import { galleryImages, type GalleryItem } from "@/config/gallery";
 import { copy } from "@/config/site";
 import { t } from "@/lib/copy";
+import { cn } from "@/lib/utils";
 
-/** Photos shown before "Show all" — one full collage block. */
+/** Photos shown before "Show all" in an ungrouped gallery — one full collage block. */
 const INITIAL = 8;
 
 /**
- * Collage tile shapes, repeating every 8 photos (the grid packs densely, so small
- * tiles drop into gaps). On 4 columns: a clean 4x4 block — tall, tall, big | wide,
- * tall, tall, small, small. On 2 columns the heights stagger like a pinned collage:
- * a 3-row tall beside a 2-row tall + small, a full-width big and wide, then a
- * 2-row tall + small beside a 3-row tall. Edges stay flush either way.
+ * Collage tile shapes (the grid packs densely, so small tiles drop into gaps).
+ *
+ * EIGHT, repeating: on 4 columns a clean 4x4 block — tall, tall, big | wide, tall,
+ * tall, small, small. On 2 columns the heights stagger like a pinned collage.
+ * SIX: big, tall, tall | wide, small, small — a 4x3 block, or 6 rows on phones.
+ * TWO: two big tiles side by side (stacked on phones).
+ * Edges stay flush in every case.
  */
-const TILE = [
+const EIGHT = [
   "row-span-3 md:row-span-2",
   "row-span-2",
   "col-span-2 row-span-2",
@@ -29,18 +32,41 @@ const TILE = [
   "",
   "",
 ];
+const SIX = ["col-span-2 row-span-2", "row-span-2", "row-span-2", "col-span-2", "", ""];
+const TWO = ["col-span-2 row-span-2", "col-span-2 row-span-2"];
+
+const tilesFor = (n: number) => (n === 2 ? TWO : n === 6 ? SIX : EIGHT);
 
 /**
  * OUR WORK — the client's own photos as a collage of tall, big and wide tiles.
- * Tap any photo for the full-size lightbox (uncropped). Photos only (no video),
- * straight from the event config.
+ * Photos with a `group` are sorted into tabs (décor, food, team…), one collage
+ * per tab. Tap any photo for the full-size lightbox (uncropped).
  */
 export default function Gallery() {
+  const groups = useMemo(() => {
+    const order: string[] = [];
+    const by: Record<string, GalleryItem[]> = {};
+    galleryImages.forEach((g) => {
+      const key = g.group ?? "";
+      if (!by[key]) {
+        by[key] = [];
+        order.push(key);
+      }
+      by[key].push(g);
+    });
+    return order.map((name) => ({ name, items: by[name] }));
+  }, []);
+  const tabbed = groups.length > 1 && groups.every((g) => g.name);
+
+  const [tab, setTab] = useState(0);
   const [active, setActive] = useState<number | null>(null);
   const [all, setAll] = useState(false);
-  const shown = all ? galleryImages : galleryImages.slice(0, INITIAL);
-  const more = galleryImages.length - INITIAL;
   if (galleryImages.length === 0) return null;
+
+  const items = tabbed ? groups[tab].items : galleryImages;
+  const shown = tabbed || all ? items : items.slice(0, INITIAL);
+  const more = tabbed ? 0 : items.length - INITIAL;
+  const tiles = tilesFor(shown.length);
 
   return (
     <section id="gallery" aria-labelledby="gallery-heading" className="bg-cream py-16 md:py-24">
@@ -60,10 +86,45 @@ export default function Gallery() {
           </Reveal>
         </div>
 
-        <div className="relative mt-12">
-          <div className="grid grid-flow-row-dense auto-rows-[118px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]">
+        {tabbed && (
+          <div
+            role="tablist"
+            aria-label="Photo categories"
+            data-lenis-prevent
+            className="-mx-6 mt-10 flex gap-2 overflow-x-auto px-6 [scrollbar-width:none] md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden"
+          >
+            {groups.map((g, i) => (
+              <button
+                key={g.name}
+                type="button"
+                role="tab"
+                aria-selected={i === tab}
+                aria-controls="gallery-panel"
+                onClick={() => {
+                  setTab(i);
+                  setActive(null);
+                }}
+                className={cn(
+                  "shrink-0 rounded-full border px-4 py-2 font-sans text-[0.8rem] font-semibold transition-colors",
+                  i === tab ? "border-espresso bg-espresso text-ivory" : "border-sand bg-white text-espresso"
+                )}
+              >
+                {g.name}
+                <span className={cn("ml-1.5 font-normal", i === tab ? "text-ivory/55" : "text-muted")}>{g.items.length}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className={cn("relative", tabbed ? "mt-6" : "mt-12")}>
+          <div
+            key={tabbed ? groups[tab].name : "all"}
+            id="gallery-panel"
+            role={tabbed ? "tabpanel" : undefined}
+            className="grid grid-flow-row-dense auto-rows-[118px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]"
+          >
             {shown.map((item, i) => (
-              <Reveal key={item.src} delay={(i % 4) * 0.06} className={TILE[i % TILE.length]}>
+              <Reveal key={item.src} delay={(i % 4) * 0.06} className={tiles[i % tiles.length]}>
                 <button
                   type="button"
                   onClick={() => setActive(i)}
@@ -101,7 +162,7 @@ export default function Gallery() {
             <button
               type="button"
               onClick={() => setAll((v) => !v)}
-              className="inline-flex items-center gap-2 rounded-full border border-espresso/20 bg-white px-6 py-3 font-sans text-sm font-medium text-espresso transition-all duration-300 hover:-translate-y-0.5 hover:border-saffron"
+              className="inline-flex items-center gap-2 rounded-full border border-espresso/20 bg-white px-6 py-3 font-sans text-sm font-medium text-espresso transition-colors duration-300 hover:border-saffron"
             >
               {all ? copy.gallery.showLess : copy.gallery.showAll.replace("{count}", String(galleryImages.length))}
               <ChevronDown size={16} className={all ? "rotate-180 transition-transform" : "transition-transform"} />
@@ -110,7 +171,7 @@ export default function Gallery() {
         )}
       </div>
 
-      <Lightbox items={galleryImages} index={active} onClose={() => setActive(null)} onNav={setActive} />
+      <Lightbox items={shown} index={active} onClose={() => setActive(null)} onNav={setActive} />
     </section>
   );
 }

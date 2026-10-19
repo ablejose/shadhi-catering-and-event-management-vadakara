@@ -28,9 +28,10 @@ export interface EventImage {
 /**
  * A gallery/about entry. Accepts a plain path/URL string (alt is generated),
  * or an object with an optional `alt` and an optional `caption` shown under
- * the photo in the Gallery section.
+ * the photo in the Gallery section. `group` sorts gallery photos into tabs
+ * (e.g. "Décor & stages", "Food & counters"); tabs appear in first-seen order.
  */
-export type GalleryEntry = MediaPath | { src: MediaPath; alt?: string; caption?: string };
+export type GalleryEntry = MediaPath | { src: MediaPath; alt?: string; caption?: string; group?: string };
 
 /** One dish on the quote-builder menu. */
 export interface MenuItem {

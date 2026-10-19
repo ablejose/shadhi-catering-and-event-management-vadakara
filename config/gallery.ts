@@ -9,6 +9,8 @@ export interface GalleryItem {
   alt: string;
   /** Shown under the photo in the Gallery section when set. */
   caption?: string;
+  /** Gallery tab this photo belongs to; ungrouped galleries show as one collage. */
+  group?: string;
   wide?: boolean;
 }
 
@@ -20,6 +22,7 @@ const normalize = (entry: GalleryEntry, fallbackAlt: string): GalleryItem => {
     src: asset(entry.src),
     alt: entry.alt ?? entry.caption ?? fallbackAlt,
     caption: entry.caption,
+    group: entry.group,
   };
 };
 
