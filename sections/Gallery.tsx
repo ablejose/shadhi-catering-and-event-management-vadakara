@@ -8,7 +8,6 @@ import Lightbox from "@/components/Lightbox";
 import { galleryImages, type GalleryItem } from "@/config/gallery";
 import { copy } from "@/config/site";
 import { t } from "@/lib/copy";
-import { cn } from "@/lib/utils";
 
 /** Photos shown before "Show all" in an ungrouped gallery — one full collage block. */
 const INITIAL = 8;
@@ -37,10 +36,47 @@ const TWO = ["col-span-2 row-span-2", "col-span-2 row-span-2"];
 
 const tilesFor = (n: number) => (n === 2 ? TWO : n === 6 ? SIX : EIGHT);
 
+/** One collage block. `offset` is the first photo's index in the lightbox list. */
+function Collage({ items, offset, onOpen }: { items: GalleryItem[]; offset: number; onOpen: (i: number) => void }) {
+  const tiles = tilesFor(items.length);
+  return (
+    <div className="grid grid-flow-row-dense auto-rows-[118px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]">
+      {items.map((item, i) => (
+        <Reveal key={item.src} delay={(i % 4) * 0.06} className={tiles[i % tiles.length]}>
+          <button
+            type="button"
+            onClick={() => onOpen(offset + i)}
+            aria-label={`Open photo: ${item.alt}`}
+            className="group relative block h-full w-full overflow-hidden rounded-brand bg-sand"
+          >
+            <Img
+              src={item.src}
+              alt={item.alt}
+              fallbackSeed={item.src}
+              className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+            />
+            <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/0 to-ink/0 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+            {item.caption && (
+              // Phones: tiles are too small for a caption over the photo; it shows in the lightbox instead.
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 hidden p-4 text-left font-sans text-sm font-medium text-ivory md:block">
+                {item.caption}
+              </span>
+            )}
+            <span className="pointer-events-none absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-ivory/85 text-espresso opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <Maximize2 size={15} />
+            </span>
+          </button>
+        </Reveal>
+      ))}
+    </div>
+  );
+}
+
 /**
  * OUR WORK — the client's own photos as a collage of tall, big and wide tiles.
- * Photos with a `group` are sorted into tabs (décor, food, team…), one collage
- * per tab. Tap any photo for the full-size lightbox (uncropped).
+ * Photos with a `group` (décor, food, team…) show one after another, each as its
+ * own labelled collage, so every category is visible without extra taps.
+ * Tap any photo for the full-size lightbox (uncropped).
  */
 export default function Gallery() {
   const groups = useMemo(() => {
@@ -56,17 +92,18 @@ export default function Gallery() {
     });
     return order.map((name) => ({ name, items: by[name] }));
   }, []);
-  const tabbed = groups.length > 1 && groups.every((g) => g.name);
+  const grouped = groups.length > 1 && groups.every((g) => g.name);
+  // Lightbox walks the photos in the order they appear on the page.
+  const ordered = useMemo(() => groups.flatMap((g) => g.items), [groups]);
 
-  const [tab, setTab] = useState(0);
   const [active, setActive] = useState<number | null>(null);
   const [all, setAll] = useState(false);
   if (galleryImages.length === 0) return null;
 
-  const items = tabbed ? groups[tab].items : galleryImages;
-  const shown = tabbed || all ? items : items.slice(0, INITIAL);
-  const more = tabbed ? 0 : items.length - INITIAL;
-  const tiles = tilesFor(shown.length);
+  const shown = grouped || all ? ordered : ordered.slice(0, INITIAL);
+  const more = grouped ? 0 : ordered.length - INITIAL;
+
+  let offset = 0;
 
   return (
     <section id="gallery" aria-labelledby="gallery-heading" className="bg-cream py-16 md:py-24">
@@ -86,76 +123,31 @@ export default function Gallery() {
           </Reveal>
         </div>
 
-        {tabbed && (
-          <div
-            role="tablist"
-            aria-label="Photo categories"
-            data-lenis-prevent
-            className="-mx-6 mt-10 flex gap-2 overflow-x-auto px-6 [scrollbar-width:none] md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden"
-          >
-            {groups.map((g, i) => (
-              <button
-                key={g.name}
-                type="button"
-                role="tab"
-                aria-selected={i === tab}
-                aria-controls="gallery-panel"
-                onClick={() => {
-                  setTab(i);
-                  setActive(null);
-                }}
-                className={cn(
-                  "shrink-0 rounded-full border px-4 py-2 font-sans text-[0.8rem] font-semibold transition-colors",
-                  i === tab ? "border-espresso bg-espresso text-ivory" : "border-sand bg-white text-espresso"
-                )}
-              >
-                {g.name}
-                <span className={cn("ml-1.5 font-normal", i === tab ? "text-ivory/55" : "text-muted")}>{g.items.length}</span>
-              </button>
-            ))}
+        {grouped ? (
+          groups.map((g) => {
+            const start = offset;
+            offset += g.items.length;
+            return (
+              <div key={g.name} className="mt-12 md:mt-16">
+                <div className="mb-4 flex items-center gap-4 md:mb-6">
+                  <h3 className="font-display text-xl text-espresso md:text-2xl">{g.name}</h3>
+                  <span className="h-px flex-1 bg-sand" />
+                  <span className="font-sans text-xs text-muted">
+                    {g.items.length} {g.items.length === 1 ? "photo" : "photos"}
+                  </span>
+                </div>
+                <Collage items={g.items} offset={start} onOpen={setActive} />
+              </div>
+            );
+          })
+        ) : (
+          <div className="relative mt-12">
+            <Collage items={shown} offset={0} onOpen={setActive} />
+            {!all && more > 0 && (
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
+            )}
           </div>
         )}
-
-        <div className={cn("relative", tabbed ? "mt-6" : "mt-12")}>
-          <div
-            key={tabbed ? groups[tab].name : "all"}
-            id="gallery-panel"
-            role={tabbed ? "tabpanel" : undefined}
-            className="grid grid-flow-row-dense auto-rows-[118px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]"
-          >
-            {shown.map((item, i) => (
-              <Reveal key={item.src} delay={(i % 4) * 0.06} className={tiles[i % tiles.length]}>
-                <button
-                  type="button"
-                  onClick={() => setActive(i)}
-                  aria-label={`Open photo: ${item.alt}`}
-                  className="group relative block h-full w-full overflow-hidden rounded-brand bg-sand"
-                >
-                  <Img
-                    src={item.src}
-                    alt={item.alt}
-                    fallbackSeed={item.src}
-                    className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
-                  />
-                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/0 to-ink/0 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
-                  {item.caption && (
-                    // Phones: tiles are too small for a caption over the photo; it shows in the lightbox instead.
-                    <span className="pointer-events-none absolute inset-x-0 bottom-0 hidden p-4 text-left font-sans text-sm font-medium text-ivory md:block">
-                      {item.caption}
-                    </span>
-                  )}
-                  <span className="pointer-events-none absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-ivory/85 text-espresso opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <Maximize2 size={15} />
-                  </span>
-                </button>
-              </Reveal>
-            ))}
-          </div>
-
-          {!all && more > 0 && (
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
-          )}
-        </div>
 
         {more > 0 && (
           <div className="relative mt-6 flex justify-center">

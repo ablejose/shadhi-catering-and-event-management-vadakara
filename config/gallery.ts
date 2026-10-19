@@ -9,7 +9,7 @@ export interface GalleryItem {
   alt: string;
   /** Shown under the photo in the Gallery section when set. */
   caption?: string;
-  /** Gallery tab this photo belongs to; ungrouped galleries show as one collage. */
+  /** Gallery group this photo belongs to; ungrouped galleries show as one collage. */
   group?: string;
   wide?: boolean;
 }
