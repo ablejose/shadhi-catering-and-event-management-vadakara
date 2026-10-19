@@ -144,9 +144,6 @@ export default function Gallery() {
                 <div className="mb-4 flex items-center gap-4 md:mb-6">
                   <h3 className="font-display text-xl text-espresso md:text-2xl">{g.name}</h3>
                   <span className="h-px flex-1 bg-sand" />
-                  <span className="font-sans text-xs text-muted">
-                    {g.items.length} {g.items.length === 1 ? "photo" : "photos"}
-                  </span>
                 </div>
                 <Collage items={g.items} offset={start} onOpen={setActive} />
               </div>
