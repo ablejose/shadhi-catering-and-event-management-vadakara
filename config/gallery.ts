@@ -2,7 +2,7 @@
 import { event } from "@/event.config";
 import { templateCopy } from "@/config/template";
 import { asset } from "@/lib/copy";
-import type { GalleryEntry } from "@/config/event-schema";
+import type { GalleryEntry, GalleryTile } from "@/config/event-schema";
 
 export interface GalleryItem {
   src: string;
@@ -11,6 +11,8 @@ export interface GalleryItem {
   caption?: string;
   /** Gallery group this photo belongs to; ungrouped galleries show as one collage. */
   group?: string;
+  /** Collage shape chosen in the event config; otherwise the group's pattern decides. */
+  tile?: GalleryTile;
   wide?: boolean;
 }
 
@@ -23,6 +25,7 @@ const normalize = (entry: GalleryEntry, fallbackAlt: string): GalleryItem => {
     alt: entry.alt ?? entry.caption ?? fallbackAlt,
     caption: entry.caption,
     group: entry.group,
+    tile: entry.tile,
   };
 };
 

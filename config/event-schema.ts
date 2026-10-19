@@ -30,8 +30,13 @@ export interface EventImage {
  * or an object with an optional `alt` and an optional `caption` shown under
  * the photo in the Gallery section. `group` sorts gallery photos into labelled
  * collages (e.g. "Décor & stages", "Food & counters"), shown in first-seen order.
+ * `tile` picks the photo's collage shape (big 2x2, tall 1x2, wide 2x1, small 1x1);
+ * a group where no photo sets it uses the built-in pattern for its photo count.
  */
-export type GalleryEntry = MediaPath | { src: MediaPath; alt?: string; caption?: string; group?: string };
+export type GalleryTile = "big" | "tall" | "wide" | "small";
+export type GalleryEntry =
+  | MediaPath
+  | { src: MediaPath; alt?: string; caption?: string; group?: string; tile?: GalleryTile };
 
 /** One dish on the quote-builder menu. */
 export interface MenuItem {

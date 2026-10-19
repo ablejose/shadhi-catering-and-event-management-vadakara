@@ -36,13 +36,24 @@ const TWO = ["col-span-2 row-span-2", "col-span-2 row-span-2"];
 
 const tilesFor = (n: number) => (n === 2 ? TWO : n === 6 ? SIX : EIGHT);
 
+/** Shapes a config can name per photo (`tile` on a gallery entry). */
+const TILE_CLASS: Record<NonNullable<GalleryItem["tile"]>, string> = {
+  big: "col-span-2 row-span-2",
+  tall: "row-span-2",
+  wide: "col-span-2",
+  small: "",
+};
+
 /** One collage block. `offset` is the first photo's index in the lightbox list. */
 function Collage({ items, offset, onOpen }: { items: GalleryItem[]; offset: number; onOpen: (i: number) => void }) {
-  const tiles = tilesFor(items.length);
+  // Photos that name their own shape win; otherwise the pattern for this photo count.
+  const hinted = items.some((it) => it.tile);
+  const pattern = tilesFor(items.length);
+  const tiles = items.map((it, i) => (hinted ? TILE_CLASS[it.tile ?? "small"] : pattern[i % pattern.length]));
   return (
     <div className="grid grid-flow-row-dense auto-rows-[118px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[230px] md:grid-cols-4 md:gap-5 lg:auto-rows-[260px]">
       {items.map((item, i) => (
-        <Reveal key={item.src} delay={(i % 4) * 0.06} className={tiles[i % tiles.length]}>
+        <Reveal key={item.src} delay={(i % 4) * 0.06} className={tiles[i]}>
           <button
             type="button"
             onClick={() => onOpen(offset + i)}
