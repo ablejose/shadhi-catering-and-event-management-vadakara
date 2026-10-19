@@ -97,23 +97,23 @@
       "tile": "tall"
     },
     {
-      "src": "gallery/15.webp",
-      "alt": "Appam with vegetable stew — Shadhi Catering and Event Management",
-      "caption": "Appam with vegetable stew",
+      "src": "gallery/19.webp",
+      "alt": "Beef roast — Shadhi Catering and Event Management",
+      "caption": "Beef roast",
       "group": "Our food & staff",
       "tile": "small"
     },
     {
-      "src": "gallery/16.webp",
-      "alt": "Mutton curry with potatoes — Shadhi Catering and Event Management",
-      "caption": "Mutton curry with potatoes",
+      "src": "gallery/20.webp",
+      "alt": "Chicken curry — Shadhi Catering and Event Management",
+      "caption": "Chicken curry",
       "group": "Our food & staff",
       "tile": "small"
     },
     {
-      "src": "gallery/17.webp",
-      "alt": "Rice and curries, served family-style — Shadhi Catering and Event Management",
-      "caption": "Rice and curries, served family-style",
+      "src": "gallery/21.webp",
+      "alt": "Spicy chicken fry — Shadhi Catering and Event Management",
+      "caption": "Spicy chicken fry",
       "group": "Our food & staff",
       "tile": "wide"
     },
@@ -122,7 +122,14 @@
       "alt": "Kerala meal with fried fish — Shadhi Catering and Event Management",
       "caption": "Kerala meal with fried fish",
       "group": "Our food & staff",
-      "tile": "wide"
+      "tile": "small"
+    },
+    {
+      "src": "gallery/22.webp",
+      "alt": "Chocolate ice cream — Shadhi Catering and Event Management",
+      "caption": "Chocolate ice cream",
+      "group": "Our food & staff",
+      "tile": "small"
     },
     {
       "src": "gallery/10.webp",
@@ -157,14 +164,7 @@
       "alt": "Our service team at the buffet — Shadhi Catering and Event Management",
       "caption": "Our service team at the buffet",
       "group": "Our food & staff",
-      "tile": "tall"
-    },
-    {
-      "src": "gallery/18.webp",
-      "alt": "Event security on duty — Shadhi Catering and Event Management",
-      "caption": "Event security on duty",
-      "group": "Our food & staff",
-      "tile": "tall"
+      "tile": "big"
     }
   ],
   "media": {
