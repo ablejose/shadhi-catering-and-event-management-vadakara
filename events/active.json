@@ -16,6 +16,7 @@
   },
   "mapsLink": "https://maps.google.com/?cid=17056010384346322199",
   "phone": "+91 81370 73555",
+  "phoneAlt": "+91 96454 88588",
   "whatsapp": "918137073555",
   "hours": "Open 9 am – 7 pm · closed Sun",
   "opens": "09:00",
@@ -46,44 +47,88 @@
   ],
   "gallery": [
     {
-      "src": "gallery/05.webp",
-      "alt": "Bride and groom under a shower of confetti — Shadhi Catering and Event Management",
-      "caption": "Bride and groom under a shower of confetti"
-    },
-    {
-      "src": "gallery/04.webp",
-      "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
-      "caption": "Night buffet with lit lattice counters"
-    },
-    {
       "src": "gallery/01.webp",
       "alt": "Red rose stage with gold arches and crystal chandeliers — Shadhi Catering and Event Management",
-      "caption": "Red rose stage with gold arches and crystal chandeliers"
+      "caption": "Red rose stage with gold arches and crystal chandeliers",
+      "group": "Décor & stages"
     },
     {
-      "src": "gallery/02.webp",
-      "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
-      "caption": "Live buffet served from copper pots"
+      "src": "gallery/05.webp",
+      "alt": "Bride and groom under a shower of confetti — Shadhi Catering and Event Management",
+      "caption": "Bride and groom under a shower of confetti",
+      "group": "Décor & stages"
     },
     {
       "src": "gallery/03.webp",
       "alt": "White and gold stage with candle stands — Shadhi Catering and Event Management",
-      "caption": "White and gold stage with candle stands"
-    },
-    {
-      "src": "gallery/06.webp",
-      "alt": "Sangeet night stage with glowing gold arches — Shadhi Catering and Event Management",
-      "caption": "Sangeet night stage with glowing gold arches"
+      "caption": "White and gold stage with candle stands",
+      "group": "Décor & stages"
     },
     {
       "src": "gallery/07.webp",
       "alt": "Gold arches dressed in pink and white roses — Shadhi Catering and Event Management",
-      "caption": "Gold arches dressed in pink and white roses"
+      "caption": "Gold arches dressed in pink and white roses",
+      "group": "Décor & stages"
+    },
+    {
+      "src": "gallery/06.webp",
+      "alt": "Sangeet night stage with glowing gold arches — Shadhi Catering and Event Management",
+      "caption": "Sangeet night stage with glowing gold arches",
+      "group": "Décor & stages"
     },
     {
       "src": "gallery/08.webp",
       "alt": "Red floral stage set for the guests — Shadhi Catering and Event Management",
-      "caption": "Red floral stage set for the guests"
+      "caption": "Red floral stage set for the guests",
+      "group": "Décor & stages"
+    },
+    {
+      "src": "gallery/09.webp",
+      "alt": "Kerala sadya on banana leaf — Shadhi Catering and Event Management",
+      "caption": "Kerala sadya on banana leaf",
+      "group": "Food & counters"
+    },
+    {
+      "src": "gallery/04.webp",
+      "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
+      "caption": "Night buffet with lit lattice counters",
+      "group": "Food & counters"
+    },
+    {
+      "src": "gallery/10.webp",
+      "alt": "Rustic food counter under hanging lights — Shadhi Catering and Event Management",
+      "caption": "Rustic food counter under hanging lights",
+      "group": "Food & counters"
+    },
+    {
+      "src": "gallery/02.webp",
+      "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
+      "caption": "Live buffet served from copper pots",
+      "group": "Food & counters"
+    },
+    {
+      "src": "gallery/11.webp",
+      "alt": "Malabar chicken biryani — Shadhi Catering and Event Management",
+      "caption": "Malabar chicken biryani",
+      "group": "Food & counters"
+    },
+    {
+      "src": "gallery/12.webp",
+      "alt": "Kerala meal with fried fish — Shadhi Catering and Event Management",
+      "caption": "Kerala meal with fried fish",
+      "group": "Food & counters"
+    },
+    {
+      "src": "gallery/13.webp",
+      "alt": "Our service team at the buffet — Shadhi Catering and Event Management",
+      "caption": "Our service team at the buffet",
+      "group": "Our team"
+    },
+    {
+      "src": "gallery/14.webp",
+      "alt": "Our hospitality team, ready for guests — Shadhi Catering and Event Management",
+      "caption": "Our hospitality team, ready for guests",
+      "group": "Our team"
     }
   ],
   "media": {
@@ -113,5 +158,6 @@
     ],
     "ogImage": "og-image.jpg"
   },
-  "url": "https://shadhi-catering-and-event-managemen.vercel.app"
+  "url": "https://shadhi-catering-and-event-managemen.vercel.app",
+  "instagram": "https://www.instagram.com/shadhieventvtk/"
 }
