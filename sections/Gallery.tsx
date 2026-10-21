@@ -11,6 +11,8 @@ import { t } from "@/lib/copy";
 
 /** Photos shown before "Show all" in an ungrouped gallery — one full collage block. */
 const INITIAL = 8;
+/** Photos each grouped section shows before its "See all" button (a full 6-tile collage block). */
+const GROUP_PREVIEW = 6;
 
 /**
  * Collage tile shapes (the grid packs densely, so small tiles drop into gaps).
@@ -110,6 +112,8 @@ export default function Gallery() {
 
   const [active, setActive] = useState<number | null>(null);
   const [all, setAll] = useState(false);
+  // Grouped galleries: each section shows its first GROUP_PREVIEW photos until "See all" is tapped.
+  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({});
   if (galleryImages.length === 0) return null;
 
   const shown = grouped || all ? ordered : ordered.slice(0, INITIAL);
@@ -139,13 +143,36 @@ export default function Gallery() {
           groups.map((g) => {
             const start = offset;
             offset += g.items.length;
+            const open = !!openGroups[g.name];
+            const extra = g.items.length - GROUP_PREVIEW;
+            const visible = open || extra <= 0 ? g.items : g.items.slice(0, GROUP_PREVIEW);
             return (
               <div key={g.name} className="mt-12 md:mt-16">
                 <div className="mb-4 flex items-center gap-4 md:mb-6">
                   <h3 className="font-display text-xl text-espresso md:text-2xl">{g.name}</h3>
                   <span className="h-px flex-1 bg-sand" />
                 </div>
-                <Collage items={g.items} offset={start} onOpen={setActive} />
+                <Collage items={visible} offset={start} onOpen={setActive} />
+                {extra > 0 && (
+                  <div className="mt-5 flex justify-center md:mt-6">
+                    <button
+                      type="button"
+                      aria-expanded={open}
+                      onClick={() => setOpenGroups((o) => ({ ...o, [g.name]: !open }))}
+                      className="inline-flex items-center gap-2 rounded-full border border-espresso/20 bg-white px-5 py-2.5 font-sans text-sm font-medium text-espresso transition-colors duration-300 hover:border-saffron"
+                    >
+                      {open ? (
+                        copy.gallery.showLess
+                      ) : (
+                        <>
+                          {copy.gallery.showAll.replace("{count}", String(g.items.length))}
+                          <span className="font-normal text-muted">({extra} more)</span>
+                        </>
+                      )}
+                      <ChevronDown size={16} className={open ? "rotate-180 transition-transform" : "transition-transform"} />
+                    </button>
+                  </div>
+                )}
               </div>
             );
           })

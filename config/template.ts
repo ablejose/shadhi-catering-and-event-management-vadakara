@@ -262,7 +262,7 @@ export const templateCopy = {
     heading: "Imagine your event like this",
     body: "Real weddings and functions we've catered and styled across {district} — the spreads, the stage and the crowd on the day.",
     photoQuote: "Every plate, petal and place setting — styled by hand.",
-    showAll: "Show all {count} photos",
+    showAll: "See all {count} photos",
     showLess: "Show fewer",
   },
 
