@@ -198,8 +198,50 @@
       "src": "about/popper.mp4",
       "poster": "about/popper-poster.webp",
       "alt": "Bride and groom on stage as the party poppers go off — Shadhi Catering and Event Management"
-    }
+    },
+    "brandDir": "brand"
   },
   "url": "https://shadhi-catering-and-event-managemen.vercel.app",
-  "instagram": "https://www.instagram.com/shadhieventvtk/"
+  "instagram": "https://www.instagram.com/shadhieventvtk/",
+  "openDays": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ],
+  "serviceAreas": [
+    "Vadakara",
+    "Payyoli",
+    "Nadapuram",
+    "Orkkatteri",
+    "Kuttiadi",
+    "Koyilandy",
+    "Thalassery"
+  ],
+  "seo": {
+    "title": "Shadhi Catering & Event Management, Vadakara | Kozhikode",
+    "description": "Wedding catering, buffets, stage décor and complete event management in Vadakara (Vatakara), Kozhikode. Rated 4.8★ on Google. Call 81370 73555.",
+    "ogDescription": "Wedding catering, stage décor and complete event management in Vadakara & Kozhikode. Rated 4.8 on Google.",
+    "altPlaceNames": [
+      "Vadakara"
+    ],
+    "keywords": [
+      "catering in Vadakara",
+      "caterers in Vadakara",
+      "wedding catering Vadakara",
+      "event management Vadakara",
+      "wedding planners Vadakara",
+      "wedding stage decoration Vadakara",
+      "nikah catering Vadakara",
+      "reception catering Vadakara",
+      "buffet catering Vadakara",
+      "catering Vatakara",
+      "catering services Kozhikode",
+      "wedding catering Kozhikode",
+      "Shadhi Event",
+      "Shadhi catering"
+    ]
+  }
 }
