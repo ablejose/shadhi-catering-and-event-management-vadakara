@@ -50,37 +50,86 @@
       "src": "gallery/01.webp",
       "alt": "Red rose stage with gold arches and crystal chandeliers — Shadhi Catering and Event Management",
       "caption": "Red rose stage with gold arches and crystal chandeliers",
-      "group": "Décor & stages"
+      "group": "Décor & stages",
+      "tile": "big"
     },
     {
       "src": "gallery/05.webp",
       "alt": "Bride and groom under a shower of confetti — Shadhi Catering and Event Management",
       "caption": "Bride and groom under a shower of confetti",
-      "group": "Décor & stages"
+      "group": "Décor & stages",
+      "tile": "tall"
     },
     {
       "src": "gallery/03.webp",
       "alt": "White and gold stage with candle stands — Shadhi Catering and Event Management",
       "caption": "White and gold stage with candle stands",
-      "group": "Décor & stages"
+      "group": "Décor & stages",
+      "tile": "tall"
     },
     {
       "src": "gallery/07.webp",
       "alt": "Gold arches dressed in pink and white roses — Shadhi Catering and Event Management",
       "caption": "Gold arches dressed in pink and white roses",
-      "group": "Décor & stages"
+      "group": "Décor & stages",
+      "tile": "wide"
     },
     {
       "src": "gallery/06.webp",
       "alt": "Sangeet night stage with glowing gold arches — Shadhi Catering and Event Management",
       "caption": "Sangeet night stage with glowing gold arches",
-      "group": "Décor & stages"
+      "group": "Décor & stages",
+      "tile": "small"
     },
     {
       "src": "gallery/08.webp",
       "alt": "Red floral stage set for the guests — Shadhi Catering and Event Management",
       "caption": "Red floral stage set for the guests",
-      "group": "Décor & stages"
+      "group": "Décor & stages",
+      "tile": "small"
+    },
+    {
+      "src": "gallery/27.webp",
+      "alt": "White pandal set for the ceremony — Shadhi Catering and Event Management",
+      "caption": "White pandal set for the ceremony",
+      "group": "Décor & stages",
+      "tile": "big"
+    },
+    {
+      "src": "gallery/28.webp",
+      "alt": "Butterfly lights over a night reception — Shadhi Catering and Event Management",
+      "caption": "Butterfly lights over a night reception",
+      "group": "Décor & stages",
+      "tile": "tall"
+    },
+    {
+      "src": "gallery/29.webp",
+      "alt": "Lit walkway into the venue — Shadhi Catering and Event Management",
+      "caption": "Lit walkway into the venue",
+      "group": "Décor & stages",
+      "tile": "tall"
+    },
+    {
+      "src": "gallery/33.webp",
+      "alt": "Stage with a live band — Shadhi Catering and Event Management",
+      "caption": "Stage with a live band",
+      "group": "Décor & stages",
+      "tile": "big",
+      "focus": "50% 40%"
+    },
+    {
+      "src": "gallery/30.webp",
+      "alt": "Fairy-light canopy over the entrance — Shadhi Catering and Event Management",
+      "caption": "Fairy-light canopy over the entrance",
+      "group": "Décor & stages",
+      "tile": "tall"
+    },
+    {
+      "src": "gallery/26.webp",
+      "alt": "Dining hall laid for the feast — Shadhi Catering and Event Management",
+      "caption": "Dining hall laid for the feast",
+      "group": "Décor & stages",
+      "tile": "tall"
     },
     {
       "src": "gallery/09.webp",
@@ -118,6 +167,20 @@
       "tile": "wide"
     },
     {
+      "src": "gallery/24.webp",
+      "alt": "Trays of fresh Mysore pak — Shadhi Catering and Event Management",
+      "caption": "Trays of fresh Mysore pak",
+      "group": "Our food & staff",
+      "tile": "wide"
+    },
+    {
+      "src": "gallery/25.webp",
+      "alt": "Dessert counter with mini pastries — Shadhi Catering and Event Management",
+      "caption": "Dessert counter with mini pastries",
+      "group": "Our food & staff",
+      "tile": "wide"
+    },
+    {
       "src": "gallery/12.webp",
       "alt": "Kerala meal with fried fish — Shadhi Catering and Event Management",
       "caption": "Kerala meal with fried fish",
@@ -131,6 +194,13 @@
       "group": "Our food & staff",
       "tile": "small",
       "focus": "50% 0%"
+    },
+    {
+      "src": "gallery/02.webp",
+      "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
+      "caption": "Live buffet served from copper pots",
+      "group": "Our food & staff",
+      "tile": "big"
     },
     {
       "src": "gallery/10.webp",
@@ -147,16 +217,30 @@
       "tile": "tall"
     },
     {
-      "src": "gallery/02.webp",
-      "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
-      "caption": "Live buffet served from copper pots",
+      "src": "gallery/31.webp",
+      "alt": "Our ushers and security team — Shadhi Catering and Event Management",
+      "caption": "Our ushers and security team",
       "group": "Our food & staff",
-      "tile": "big"
+      "tile": "tall"
+    },
+    {
+      "src": "gallery/32.webp",
+      "alt": "Security team on duty in the hall — Shadhi Catering and Event Management",
+      "caption": "Security team on duty in the hall",
+      "group": "Our food & staff",
+      "tile": "tall"
     },
     {
       "src": "gallery/14.webp",
       "alt": "Our hospitality team, ready for guests — Shadhi Catering and Event Management",
       "caption": "Our hospitality team, ready for guests",
+      "group": "Our food & staff",
+      "tile": "big"
+    },
+    {
+      "src": "gallery/34.webp",
+      "alt": "Guests at the buffet, service in full swing — Shadhi Catering and Event Management",
+      "caption": "Guests at the buffet, service in full swing",
       "group": "Our food & staff",
       "tile": "big"
     },
@@ -242,6 +326,28 @@
       "wedding catering Kozhikode",
       "Shadhi Event",
       "Shadhi catering"
+    ]
+  },
+  "foundedYear": 2015,
+  "recognition": {
+    "heading": "Eleven years of Vadakara’s biggest days — and the papers noticed.",
+    "body": "Since 2015, Shadhi has catered and styled weddings, receptions and family functions across Vadakara and Kozhikode.",
+    "items": [
+      {
+        "src": "recognition/01.webp",
+        "thumb": "recognition/01-thumb.webp",
+        "title": "Featured: a decade of Shadhi Catering & Event",
+        "source": "Kerala Kaumudi",
+        "note": "A feature on how Shadhi grew into full catering and event management in Vadakara."
+      },
+      {
+        "src": "recognition/02.webp",
+        "thumb": "recognition/02-thumb.webp",
+        "title": "Honoured at Kerala Kaumudi’s 114th anniversary",
+        "source": "Kerala Kaumudi, Kozhikode",
+        "date": "12 Nov 2025",
+        "note": "Founder P.U. Hashim receives the paper’s honour at an event in Chombala, Vadakara."
+      }
     ]
   }
 }
