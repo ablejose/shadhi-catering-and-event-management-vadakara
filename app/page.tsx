@@ -6,6 +6,7 @@ import Gallery from "@/sections/Gallery";
 import Process from "@/sections/Process";
 import About from "@/sections/About";
 import Testimonials from "@/sections/Testimonials";
+import Recognition from "@/sections/Recognition";
 import Menu from "@/sections/Menu";
 import Footer from "@/sections/Footer";
 import { variant } from "@/config/site";
@@ -46,6 +47,7 @@ export default function HomePage() {
         return <Section key={key} />;
       })}
       <Testimonials />
+      <Recognition />
       <Menu />
       <Footer />
     </main>

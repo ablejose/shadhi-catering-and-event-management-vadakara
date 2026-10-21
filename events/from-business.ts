@@ -81,6 +81,11 @@ export interface BusinessInput {
     brandDir?: string;
   };
 
+  /** Year they started (e.g. 2015). */
+  foundedYear?: number;
+  /** Their own press / award clippings for the Recognition strip. */
+  recognition?: EventConfig["recognition"];
+
   /** Live site origin, no trailing slash. */
   url: string;
 }
@@ -134,6 +139,7 @@ export function fromBusiness(b: BusinessInput): EventConfig {
       kicker: descriptor,
       tagline: b.tagline || "Weddings & events, catered with care.",
       headline: b.headline || "Unforgettable feasts. Flawless celebrations.",
+      foundedYear: b.foundedYear,
     },
     contact: { phone: b.phone, phoneAlt: b.phoneAlt || undefined, whatsapp: b.whatsapp, email: b.email || undefined },
     location: {
@@ -170,6 +176,7 @@ export function fromBusiness(b: BusinessInput): EventConfig {
       ),
     },
     reviews: (b.reviews ?? []).map((r) => ({ ...r, source: "Google review" })),
+    recognition: b.recognition,
     seo: {
       ...b.seo,
       keywords: uniq([b.name, b.shortName, `${b.shortName || b.name} ${b.city}`, ...(b.seo?.keywords ?? [])]),

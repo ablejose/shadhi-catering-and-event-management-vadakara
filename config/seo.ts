@@ -42,6 +42,7 @@ export const jsonLd = {
       alternateName: Array.from(new Set([site.name, `${site.name} ${site.kicker}`])),
       description: seo.description,
       slogan: event.brand.headline,
+      foundingDate: event.brand.foundedYear ? String(event.brand.foundedYear) : undefined,
       url: `${site.url}/`,
       image: [
         abs(brandAssets.ogImage),

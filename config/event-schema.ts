@@ -108,6 +108,8 @@ export interface EventConfig {
     tagline: string;
     /** Local hero headline shown under the name. Falls back to `tagline` when unset. */
     headline?: string;
+    /** Year the business started — shown in Recognition and sent to Google as foundingDate. */
+    foundedYear?: number;
     /** Optional Malayalam line shown under the headline/tagline in the hero. */
     taglineMl?: string;
   };
@@ -218,6 +220,16 @@ export interface EventConfig {
 
   /** Real reviews only. Leave empty to hide the Reviews section. */
   reviews: EventReview[];
+
+  /**
+   * Optional press / award clippings, shown as a small "Recognition" strip.
+   * Their own coverage only; `thumb` is the small image on the page, `src` the full one in the viewer.
+   */
+  recognition?: {
+    heading: string;
+    body?: string;
+    items: { src: MediaPath; thumb?: MediaPath; title: string; source: string; date?: string; note?: string }[];
+  };
 
   seo?: {
     /** Extra keywords on top of the generated ones. */
