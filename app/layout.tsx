@@ -3,7 +3,7 @@ import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import { brandAssets, copy, icon, site } from "@/config/site";
 import { event } from "@/event.config";
-import { jsonLd, seo } from "@/config/seo";
+import { jsonLd, placeNames, seo } from "@/config/seo";
 import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
 import WhatsAppFab from "@/components/WhatsAppFab";
@@ -75,9 +75,22 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+  // Search Console / Bing codes: set seo.googleVerification / bingVerification in the event config.
+  verification: seo.googleVerification || seo.bingVerification
+    ? {
+        ...(seo.googleVerification && { google: seo.googleVerification }),
+        ...(seo.bingVerification && { other: { "msvalidate.01": seo.bingVerification } }),
+      }
     : undefined,
+  // Local-search hints: where the business is (region code, town, map pin).
+  other: {
+    "geo.region": `${event.location.country}-${event.location.region === "Kerala" ? "KL" : event.location.region}`,
+    "geo.placename": `${placeNames.join(" / ")}, ${event.location.district}`,
+    ...(event.location.geo && {
+      "geo.position": `${event.location.geo.lat};${event.location.geo.lng}`,
+      ICBM: `${event.location.geo.lat}, ${event.location.geo.lng}`,
+    }),
+  },
 };
 
 export const viewport: Viewport = {

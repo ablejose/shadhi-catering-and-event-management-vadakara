@@ -149,6 +149,8 @@ export interface EventConfig {
     /** schema.org opening hours. */
     opens?: string;
     closes?: string;
+    /** Days open, e.g. ["Monday", …, "Saturday"]. Omit for every day. */
+    openDays?: string[];
     delivery?: boolean;
   };
 
@@ -222,6 +224,16 @@ export interface EventConfig {
     keywords?: string[];
     /** Overrides the generated meta description. */
     description?: string;
+    /** Overrides the generated page title (keep it under ~65 characters). */
+    title?: string;
+    /** Overrides the generated social-share description. */
+    ogDescription?: string;
+    /** Other names people search for the town, e.g. ["Vadakara"] for "Vatakara". */
+    altPlaceNames?: string[];
+    /** Code from Google Search Console's "HTML tag" method (the content="…" value). */
+    googleVerification?: string;
+    /** Code from Bing Webmaster Tools' meta-tag method. */
+    bingVerification?: string;
   };
 
   /**

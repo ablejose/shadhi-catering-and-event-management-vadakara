@@ -46,6 +46,20 @@ export interface BusinessInput {
   hours?: string;
   opens?: string;
   closes?: string;
+  /** Days open for schema.org, e.g. Monday–Saturday. Omit for every day. */
+  openDays?: string[];
+  /** Nearby towns they serve, on top of city / area / district (footer + schema.org). */
+  serviceAreas?: string[];
+  /** Their own search wording and Search Console / Bing verification codes. */
+  seo?: {
+    title?: string;
+    description?: string;
+    ogDescription?: string;
+    keywords?: string[];
+    altPlaceNames?: string[];
+    googleVerification?: string;
+    bingVerification?: string;
+  };
 
   rating?: number;
   reviewCount?: number;
@@ -63,6 +77,8 @@ export interface BusinessInput {
     /** One image per shared service card, in order. */
     services?: string[];
     ogImage?: string;
+    /** Their own favicon / app-icon folder, relative to /events/<slug>/ (e.g. "brand"). */
+    brandDir?: string;
   };
 
   /** Live site origin, no trailing slash. */
@@ -129,13 +145,14 @@ export function fromBusiness(b: BusinessInput): EventConfig {
       street: b.street || b.area || b.city,
       postalCode: b.postalCode || "",
       country: "IN",
-      serviceAreas: uniq([b.city, b.area, district]),
+      serviceAreas: uniq([b.city, b.area, district, ...(b.serviceAreas ?? [])]),
       geo: b.geo,
       mapsLink: b.mapsLink,
       mapEmbed,
       hours: b.hours || "Call or WhatsApp to book",
       opens: b.opens,
       closes: b.closes,
+      openDays: b.openDays,
       delivery: false,
     },
     web: { url: b.url, instagram: b.instagram || undefined, facebook: b.facebook || undefined },
@@ -145,7 +162,7 @@ export function fromBusiness(b: BusinessInput): EventConfig {
       heroPoster: srcOf(heroSlides[0]),
       heroSlides,
       ogImage: b.media?.ogImage || STOCK.ogImage,
-      brandDir: STOCK.brandDir,
+      brandDir: b.media?.brandDir || STOCK.brandDir,
       about: b.media?.about?.length ? b.media.about : STOCK.about,
       aboutVideo: b.media?.aboutVideo,
       gallery: b.gallery.map((g, i) =>
@@ -153,7 +170,10 @@ export function fromBusiness(b: BusinessInput): EventConfig {
       ),
     },
     reviews: (b.reviews ?? []).map((r) => ({ ...r, source: "Google review" })),
-    seo: { keywords: uniq([b.name, b.shortName, `${b.shortName || b.name} ${b.city}`]) },
+    seo: {
+      ...b.seo,
+      keywords: uniq([b.name, b.shortName, `${b.shortName || b.name} ${b.city}`, ...(b.seo?.keywords ?? [])]),
+    },
     overrides: {
       menu: neutralMenu,
       menuPresets: neutralPresets,
