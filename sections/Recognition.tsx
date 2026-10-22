@@ -27,14 +27,17 @@ export default function Recognition() {
       <div className="mx-auto max-w-shell px-6">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
           <Reveal>
-            <p className="eyebrow">Recognition{since ? ` · Since ${since}` : ""}</p>
+            <p className="eyebrow">Recognition</p>
             <h2 id="recognition-heading" className="display mt-4" style={{ fontSize: "clamp(1.7rem, 3vw, 2.5rem)" }}>
               {r.heading}
             </h2>
             {r.body && <p className="body-copy mt-4 max-w-md">{r.body}</p>}
-            {years !== undefined && years > 0 && (
-              <p className="mt-6 inline-flex items-baseline gap-2 rounded-full bg-[var(--saffron-soft)] px-4 py-2 font-sans text-sm text-espresso">
-                <span className="font-display text-2xl leading-none text-saffron-2">{years}</span> years of weddings &amp; events
+            {since && (
+              <p className="mt-6 inline-flex flex-col rounded-2xl bg-[var(--saffron-soft)] px-5 py-3 text-espresso">
+                <span className="font-display text-3xl leading-none text-saffron-2 md:text-4xl">Since {since}</span>
+                {years !== undefined && years > 0 && (
+                  <span className="mt-1.5 font-sans text-xs text-espresso/75">{years} years of weddings &amp; events</span>
+                )}
               </p>
             )}
           </Reveal>
@@ -46,12 +49,13 @@ export default function Recognition() {
                   type="button"
                   onClick={() => setActive(i)}
                   aria-label={`Open clipping: ${it.title}`}
-                  className="group flex h-full w-full items-start gap-4 rounded-brand border border-sand bg-cream/60 p-3 text-left transition-colors duration-300 hover:border-saffron/60"
+                  className="group grid h-full w-full grid-cols-2 items-start gap-4 rounded-brand border border-sand bg-cream/60 p-3 text-left transition-colors duration-300 hover:border-saffron/60"
                 >
-                  <span className="relative block h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-sand ring-1 ring-sand">
-                    <Img src={asset(it.thumb ?? it.src)} alt={it.title} className="h-full w-full object-cover object-top" />
-                    <span className="pointer-events-none absolute bottom-1 right-1 grid h-5 w-5 place-items-center rounded-full bg-ivory/90 text-espresso">
-                      <Maximize2 size={11} />
+                  {/* The clipping takes half the card. */}
+                  <span className="relative block aspect-[4/5] w-full overflow-hidden rounded-lg bg-white ring-1 ring-sand">
+                    <Img src={asset(it.thumb ?? it.src)} alt={it.title} className="h-full w-full object-contain" />
+                    <span className="pointer-events-none absolute bottom-1.5 right-1.5 grid h-6 w-6 place-items-center rounded-full bg-ivory/90 text-espresso">
+                      <Maximize2 size={12} />
                     </span>
                   </span>
                   <span className="min-w-0 pt-0.5">
