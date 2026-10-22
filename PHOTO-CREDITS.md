@@ -14,3 +14,5 @@ Shadhi's own photos when available.
 | `gallery/20.webp` | [Chicken curry in a white bowl with sauce](https://unsplash.com/photos/chicken-curry-in-a-white-bowl-with-sauce-VtNLbOAeO68) | Kalindu Waranga |
 | `gallery/21.webp` | [Brown and green food on gray tray](https://unsplash.com/photos/brown-and-green-food-on-gray-tray-hEMOwugpjJk) (spicy chicken fry) | Dr Muhammad Amer |
 | `gallery/23.webp` | [Ice cream with chocolate and chocolate ice cream on clear glass](https://unsplash.com/photos/ice-cream-with-chocolate-and-chocolate-ice-cream-on-clear-glass-g65SMAYRZJQ) (cropped 4:3) | Sebastian Coman Photography |
+| `gallery/35.webp` | [Chickens rotating on a rotisserie grill](https://unsplash.com/photos/chickens-rotating-on-a-rotisserie-grill-kq_S_HdC6UI) (live shawaya) | Sebastián Brito |
+| `gallery/36.webp` | [Fried chicken on brown paper bag](https://unsplash.com/photos/fried-chicken-on-brown-paper-bag-NbXjZomyNEM) (live broast) | Brian Chan |

@@ -135,120 +135,137 @@
       "src": "gallery/09.webp",
       "alt": "Kerala sadya on banana leaf — Shadhi Catering and Event Management",
       "caption": "Kerala sadya on banana leaf",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "big"
     },
     {
       "src": "gallery/11.webp",
       "alt": "Malabar chicken biryani — Shadhi Catering and Event Management",
       "caption": "Malabar chicken biryani",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "tall"
     },
     {
       "src": "gallery/19.webp",
       "alt": "Beef roast — Shadhi Catering and Event Management",
       "caption": "Beef roast",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "small"
     },
     {
       "src": "gallery/20.webp",
       "alt": "Chicken curry — Shadhi Catering and Event Management",
       "caption": "Chicken curry",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "small"
     },
     {
       "src": "gallery/21.webp",
       "alt": "Spicy chicken fry — Shadhi Catering and Event Management",
       "caption": "Spicy chicken fry",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "wide"
     },
     {
       "src": "gallery/24.webp",
       "alt": "Trays of fresh Mysore pak — Shadhi Catering and Event Management",
       "caption": "Trays of fresh Mysore pak",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "wide"
     },
     {
-      "src": "gallery/25.webp",
-      "alt": "Dessert counter with mini pastries — Shadhi Catering and Event Management",
-      "caption": "Dessert counter with mini pastries",
-      "group": "Our food & staff",
+      "src": "gallery/35.webp",
+      "alt": "Live shawaya counter, chicken on the spit — Shadhi Catering and Event Management",
+      "caption": "Live shawaya counter, chicken on the spit",
+      "group": "Our food",
       "tile": "wide"
     },
     {
       "src": "gallery/12.webp",
       "alt": "Kerala meal with fried fish — Shadhi Catering and Event Management",
       "caption": "Kerala meal with fried fish",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "small"
     },
     {
       "src": "gallery/23.webp",
       "alt": "Ice cream sundae with a wafer — Shadhi Catering and Event Management",
       "caption": "Ice cream sundae with a wafer",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "small",
       "focus": "50% 0%"
+    },
+    {
+      "src": "gallery/36.webp",
+      "alt": "Live broast counter, served hot — Shadhi Catering and Event Management",
+      "caption": "Live broast counter, served hot",
+      "group": "Our food",
+      "tile": "wide"
+    },
+    {
+      "src": "gallery/25.webp",
+      "alt": "Dessert counter with mini pastries — Shadhi Catering and Event Management",
+      "caption": "Dessert counter with mini pastries",
+      "group": "Our food",
+      "tile": "small"
+    },
+    {
+      "src": "gallery/34.webp",
+      "alt": "Guests at the buffet, service in full swing — Shadhi Catering and Event Management",
+      "caption": "Guests at the buffet, service in full swing",
+      "group": "Our food",
+      "tile": "small",
+      "focus": "50% 35%"
     },
     {
       "src": "gallery/02.webp",
       "alt": "Live buffet served from copper pots — Shadhi Catering and Event Management",
       "caption": "Live buffet served from copper pots",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "big"
     },
     {
       "src": "gallery/10.webp",
       "alt": "Rustic food counter under hanging lights — Shadhi Catering and Event Management",
       "caption": "Rustic food counter under hanging lights",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "tall"
     },
     {
       "src": "gallery/04.webp",
       "alt": "Night buffet with lit lattice counters — Shadhi Catering and Event Management",
       "caption": "Night buffet with lit lattice counters",
-      "group": "Our food & staff",
+      "group": "Our food",
       "tile": "tall"
     },
     {
       "src": "gallery/31.webp",
       "alt": "Our ushers and security team — Shadhi Catering and Event Management",
       "caption": "Our ushers and security team",
-      "group": "Our food & staff",
-      "tile": "tall"
+      "group": "Our staff",
+      "tile": "big",
+      "focus": "50% 12%"
     },
     {
       "src": "gallery/32.webp",
       "alt": "Security team on duty in the hall — Shadhi Catering and Event Management",
       "caption": "Security team on duty in the hall",
-      "group": "Our food & staff",
-      "tile": "tall"
+      "group": "Our staff",
+      "tile": "big",
+      "focus": "50% 30%"
     },
     {
       "src": "gallery/14.webp",
       "alt": "Our hospitality team, ready for guests — Shadhi Catering and Event Management",
       "caption": "Our hospitality team, ready for guests",
-      "group": "Our food & staff",
-      "tile": "big"
-    },
-    {
-      "src": "gallery/34.webp",
-      "alt": "Guests at the buffet, service in full swing — Shadhi Catering and Event Management",
-      "caption": "Guests at the buffet, service in full swing",
-      "group": "Our food & staff",
+      "group": "Our staff",
       "tile": "big"
     },
     {
       "src": "gallery/13.webp",
       "alt": "Our service team at the buffet — Shadhi Catering and Event Management",
       "caption": "Our service team at the buffet",
-      "group": "Our food & staff",
+      "group": "Our staff",
       "tile": "big"
     }
   ],
@@ -347,6 +364,35 @@
         "source": "Kerala Kaumudi, Kozhikode",
         "date": "12 Nov 2025",
         "note": "Founder P.U. Hashim receives the paper’s honour at an event in Chombala, Vadakara."
+      }
+    ]
+  },
+  "menuExtras": {
+    "starters": [
+      {
+        "id": "chicken-nuggets",
+        "name": "Chicken Nuggets",
+        "ml": "ചിക്കൻ നഗറ്റ്സ്",
+        "note": "Crumbed and golden — a favourite with the kids",
+        "veg": false
+      }
+    ],
+    "sadya": [
+      {
+        "id": "mini-nonveg-sadya",
+        "name": "Mini Non-veg Sadya",
+        "ml": "മിനി നോൺ-വെജ് സദ്യ",
+        "note": "Sadya favourites with chicken and fish curry",
+        "veg": false
+      }
+    ],
+    "non-veg": [
+      {
+        "id": "crab-roast",
+        "name": "Crab Roast",
+        "ml": "ഞണ്ട് റോസ്റ്റ്",
+        "note": "Shell-on crab in a thick roasted masala",
+        "veg": false
       }
     ]
   }
