@@ -1,4 +1,4 @@
-import type { EventConfig, EventVariant, GalleryEntry, MenuPreset } from "@/config/event-schema";
+import type { EventConfig, EventVariant, GalleryEntry, MenuItem, MenuPreset } from "@/config/event-schema";
 import { templateMenu, templateMenuPresets, templateServices } from "@/config/template";
 
 /**
@@ -80,6 +80,9 @@ export interface BusinessInput {
     /** Their own favicon / app-icon folder, relative to /events/<slug>/ (e.g. "brand"). */
     brandDir?: string;
   };
+
+  /** Extra dishes they serve, added to the end of a menu course by its id (e.g. "starters", "sadya", "non-veg"). */
+  menuExtras?: Record<string, MenuItem[]>;
 
   /** Year they started (e.g. 2015). */
   foundedYear?: number;
@@ -182,7 +185,7 @@ export function fromBusiness(b: BusinessInput): EventConfig {
       keywords: uniq([b.name, b.shortName, `${b.shortName || b.name} ${b.city}`, ...(b.seo?.keywords ?? [])]),
     },
     overrides: {
-      menu: neutralMenu,
+      menu: neutralMenu.map((c) => ({ ...c, items: [...c.items, ...(b.menuExtras?.[c.id] ?? [])] })),
       menuPresets: neutralPresets,
       ...(b.media?.services?.length && {
         services: templateServices.map((s, i) => ({ ...s, image: b.media?.services?.[i] || s.image })),
